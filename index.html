@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Course Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Modern Gradient Background */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px; /* Added padding for mobile */
+    }
+
+    /* Login Container */
+    .login-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 350px; /* Maximum width for larger screens */
+      transform: translateY(0);
+      animation: slideUp 0.6s ease;
+      box-sizing: border-box; /* Added to prevent overflow */
+    }
+
+    /* Header Style */
+    h2 {
+      color: #2d3436;
+      margin: 0 0 1.5rem 0;
+      text-align: center;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.5rem;
+    }
+
+    /* Input Fields */
+    input {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      border: 2px solid #eee;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      box-sizing: border-box; /* Fix overflow issue */
+    }
+
+    input:focus {
+      border-color: #4ecdc4;
+      box-shadow: 0 0 8px rgba(78, 205, 196, 0.3);
+      outline: none;
+    }
+
+    /* Button Design */
+    button {
+      background: linear-gradient(45deg, #4ecdc4, #45b7af);
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 10px;
+    }
+
+    /* Labels */
+    label {
+      color: #2d3436;
+      font-weight: 500;
+      margin: 15px 0 5px 0;
+      display: block;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    /* Animation */
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Input Icons */
+    input[type="text"] {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z' fill='%237b7b7b'/%3E%3C/svg%3E") no-repeat 15px center;
+      background-size: 18px;
+      padding-left: 45px;
+    }
+
+    input[type="password"] {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M19 10h-1V7c0-3.308-2.692-6-6-6S6 3.692 6 7v3H5c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2zM8 7c0-2.206 1.794-4 4-4s4 1.794 4 4v3H8V7zm11 13H5v-8h14v8z' fill='%237b7b7b'/%3E%3C/svg%3E") no-repeat 15px center;
+      background-size: 18px;
+      padding-left: 45px;
+    }
+
+    /* Mobile Responsive Adjustments */
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 1.5rem;
+        border-radius: 15px;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      input {
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+
+      button {
+        padding: 12px 15px;
+        font-size: 14px;
+      }
+
+      body {
+        padding: 15px;
+        font-size: 14px;
+      }
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Login Container */
+    .login-container, .courses-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .courses-container {
+      display: none; /* Hidden by default */
+    }
+
+    /* Course Buttons */
+    .course-button {
+      background: linear-gradient(45deg, #4ecdc4, #45b7af);
+      color: white;
+      padding: 18px 25px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      width: 100%;
+      margin: 15px 0;
+      font-size: 16px;
+      font-weight: bold;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .course-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+    }
+
+    .course-button:nth-child(2) {
+      background: linear-gradient(45deg, #ff6b6b, #ff8787);
+    }
+
+    .course-button:nth-child(2):hover {
+      box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    }
+  </style>
+  
+  <script>
+    // Course URLs (Update these with your actual links)
+    const COURSE_LINKS = {
+      course1: "https://drive.google.com/course1-link",
+      course2: "https://drive.google.com/course2-link"
+    };
+
+    function checkCredentials() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const validUsername = "admin";
+      const validPassword = "user320";
+
+      if (username === validUsername && password === validPassword) {
+        // Show course selection
+        document.querySelector('.login-container').style.display = 'none';
+        document.querySelector('.courses-container').style.display = 'block';
+      } else {
+        alert("Incorrect credentials. Please try again.");
+      }
+    }
+
+    function redirectToCourse(courseNumber) {
+      window.location.href = COURSE_LINKS[`course${courseNumber}`];
+    }
+
+    function logout() {
+      document.querySelector('.login-container').style.display = 'block';
+      document.querySelector('.courses-container').style.display = 'none';
+      document.getElementById("username").value = '';
+      document.getElementById("password").value = '';
+    }
+  </script>
+</head>
+<body>
+  <!-- Login Form -->
+  <div class="login-container">
+    <h2>🔒 Course Portal Login</h2>
+    <label for="username">Username:</label>
+    <input type="text" id="username" placeholder="Enter username" required>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="Enter password" required>
+    
+    <button onclick="checkCredentials()">Access Courses →</button>
+  </div>
+
+  <!-- Course Selection -->
+  <div class="courses-container">
+    <h2>🎓 Available Courses</h2>
+    <button class="course-button" onclick="redirectToCourse(1)">
+      📘 Mirchawala F2
+    </button>
+    
+    <button class="course-button" onclick="redirectToCourse(2)">
+      📚 Wisdom school of accountancy F2
+    </button>
+
+    <div style="margin-top: 25px;">
+      <button onclick="logout()" style="
+        background: none;
+        border: none;
+        color: #ff6b6b;
+        cursor: pointer;
+        font-weight: 500;
+      ">
+        ← Back to Login
+      </button>
+    </div>
+  </div>
+</body>
+</html>
